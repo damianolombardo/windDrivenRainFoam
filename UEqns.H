@@ -12,8 +12,7 @@ surfaceScalarField phiRa
 
 fvVectorMatrix UrainEqn
 (
-    fvm::ddt(Urain[phase_no])
-    + fvm::div(phirain[phase_no], Urain[phase_no],"div(phirain,Urain)")
+    fvm::div(phirain[phase_no], Urain[phase_no],"div(phirain,Urain)")
 //    - fvm::Sp(fvc::div(phirain[phase_no]),Urain[phase_no]) //removed for bounded div scheme
 
     - fvm::laplacian(nutrain, Urain[phase_no])
@@ -30,7 +29,5 @@ fvVectorMatrix UrainEqn
 UrainEqn.relax();
 
 UrainEqn.solve();
-
-Urain[phase_no].correctBoundaryConditions();
 
 phirain[phase_no] = fvc::interpolate(Urain[phase_no]) & mesh.Sf();
