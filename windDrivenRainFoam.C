@@ -68,7 +68,7 @@ int main(int argc, char *argv[])
     {
         Info<< nl << "Time = " << runTime.timeName() << nl;
         
-        for (int nonOrth=0; nonOrth<=simple.nNonOrthCorr(); nonOrth++)
+        for (int nonOrth=0; nonOrth<=simple.correctNonOrthogonal(); nonOrth++)
         {
             for (int phase_no = 0; phase_no < phases.size(); phase_no++)
             {
